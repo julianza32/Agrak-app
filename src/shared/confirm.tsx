@@ -17,7 +17,7 @@ export const Confirm: React.FC<UIconfirm> = ({ message, show, action, setShow })
                 <Modal.Body>
                     <div>
                         <h4 className='text-center'>{message}</h4>
-                        <div className='row justify-content-center m-0 p-0 mt-3'>
+                        <div className='row justify-content-center m-0 p-0 mt-3 '>
 
                             <OverlayTrigger
                                 placement="top"
