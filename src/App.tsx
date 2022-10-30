@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { Provider } from 'react-redux';
+import { Route, Switch, useRoute } from 'wouter';
+import './App.css';
+import CreateUser from './pages/user';
+import Home from './pages/home';
+import ListUser from './pages/list-users';
+import Navbar from './shared/navbar';
+import storeUser from './store/storeUser';
+import React from 'react';
+
+
+const App = () => {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={storeUser}>
+      <Navbar />
+      <div className='background'>
+
+        <Switch>
+          <Route path='/'> <Home/> </Route>
+          <Route path='/user' ><CreateUser id={null} /></Route>
+          <Route path="/user/:id">
+            {(params)=><CreateUser id={params.id} />}
+          </Route>
+          <Route path='/users'><ListUser/></Route>
+        </Switch>
+      </div>
+    </Provider>
+
   );
 }
 
